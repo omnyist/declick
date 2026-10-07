@@ -1,6 +1,6 @@
 {
   "name": "@omnyist/declick",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Oxlint presets for TypeScript and React projects, and a test helper that checks the rules still run.",
   "keywords": [
     "oxlint",
