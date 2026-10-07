@@ -1,6 +1,9 @@
 {
   // eslint-plugin-storybook, loaded as an Oxlint JS plugin, with the rules its flat/recommended
   // config sets. Install eslint-plugin-storybook beside oxlint.
+
+  // A file that leaves out "plugins" adds Oxlint's default plugins, even when extended.
+  "plugins": [],
   "jsPlugins": ["eslint-plugin-storybook"],
   "overrides": [
     {

@@ -283,10 +283,8 @@ exports[`tanstack-query resolves to the same config 1`] = `
   },
   "overrides": [],
   "plugins": [
-    "oxc",
     "react",
     "typescript",
-    "unicorn",
   ],
   "rules": {
     "@tanstack/query/exhaustive-deps": "warn",
@@ -444,10 +442,8 @@ exports[`tanstack-router resolves to the same config 1`] = `
     },
   ],
   "plugins": [
-    "oxc",
     "react",
     "typescript",
-    "unicorn",
   ],
   "rules": {
     "for-direction": "error",
@@ -620,10 +616,8 @@ exports[`storybook resolves to the same config 1`] = `
     },
   ],
   "plugins": [
-    "oxc",
     "react",
     "typescript",
-    "unicorn",
   ],
   "rules": {
     "for-direction": "error",
@@ -805,10 +799,8 @@ exports[`all resolves to the same config 1`] = `
     },
   ],
   "plugins": [
-    "oxc",
     "react",
     "typescript",
-    "unicorn",
   ],
   "rules": {
     "@tanstack/query/exhaustive-deps": "warn",

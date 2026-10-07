@@ -1,6 +1,9 @@
 {
   // TanStack Query's ESLint plugin, loaded as an Oxlint JS plugin. Install
   // @tanstack/eslint-plugin-query beside oxlint.
+
+  // A file that leaves out "plugins" adds Oxlint's default plugins, even when extended.
+  "plugins": [],
   "jsPlugins": ["@tanstack/eslint-plugin-query"],
   "rules": {
     "@tanstack/query/exhaustive-deps": "warn",

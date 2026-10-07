@@ -1,4 +1,6 @@
 {
+  // A file that leaves out "plugins" adds Oxlint's default plugins, even when extended.
+  "plugins": [],
   "overrides": [
     {
       // TanStack Router's file routes export `Route` beside a local component. With

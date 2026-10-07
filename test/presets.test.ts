@@ -93,11 +93,22 @@ describe.each(Object.keys(expected))('%s', (name) => {
 
 // Oxlint takes rules, overrides, plugins, jsPlugins, categories and options from an extended
 // file. It ignores env, globals, settings and ignorePatterns there, so a preset that set them
-// would look as if it did something and not.
-test('presets set only the keys Oxlint takes from an extended file', () => {
-  const allowed = new Set(['plugins', 'jsPlugins', 'categories', 'options', 'rules', 'overrides'])
-  for (const file of readdirSync(join(root, 'oxlint'))) {
-    const preset = parseJsonc(readFileSync(join(root, 'oxlint', file), 'utf8')) as object
-    expect({ file, keys: Object.keys(preset).filter((key) => !allowed.has(key)) }).toEqual({ file, keys: [] })
-  }
+// would look as if it did something and not. And a file that leaves out plugins, extended or not,
+// adds Oxlint's default plugins (unicorn, typescript, oxc) to the project.
+describe.each(readdirSync(join(root, 'oxlint')))('oxlint/%s', (file) => {
+  const preset = parseJsonc(readFileSync(join(root, 'oxlint', file), 'utf8')) as Record<string, unknown>
+
+  test('sets only keys Oxlint takes from an extended file', () => {
+    const allowed = new Set(['plugins', 'jsPlugins', 'categories', 'options', 'rules', 'overrides'])
+    expect(Object.keys(preset).filter((key) => !allowed.has(key))).toEqual([])
+  })
+
+  test('names its plugins', () => {
+    expect(Array.isArray(preset.plugins)).toBe(true)
+  })
+})
+
+test('extending every preset turns on only their plugins', async () => {
+  const config = await resolvedConfig({ cwd: fixture('all'), oxlint })
+  expect(config.plugins).toEqual(['react', 'typescript'])
 })
