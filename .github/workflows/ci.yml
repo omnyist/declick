@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.x
+      # Installing also builds dist/ through the prepare script.
+      - run: bun install --frozen-lockfile
+      - run: bun run typecheck
+      - run: bun run lint
+      - run: bun test
+      # The guard as a Node project imports it: the built files, through the package's exports.
+      # Node 22 is the oldest line oxlint supports that is still maintained.
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - run: node test/node-smoke.mjs
