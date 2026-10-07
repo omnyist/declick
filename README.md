@@ -170,6 +170,8 @@ node test/node-smoke.mjs
 
 Each folder in `test/fixtures` is a small project that extends some of the presets and breaks their rules. The tests lint each one and compare every reported rule, and snapshot its resolved config.
 
+A release is a version bump in `package.json` and a matching `v*` tag. Pushing the tag publishes to npm from GitHub Actions through npm's trusted publishing, with provenance and no stored token.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).

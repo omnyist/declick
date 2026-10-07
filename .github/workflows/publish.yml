@@ -1,0 +1,39 @@
+name: Publish
+
+# Publishes to npm when a version tag is pushed, through npm's trusted publishing:
+# npm trusts this workflow by name, so no token is stored anywhere, and every
+# release carries provenance.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.x
+      # Trusted publishing needs npm 11.5.1 or later and Node 22.14 or later.
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          registry-url: 'https://registry.npmjs.org'
+      - name: Check the tag matches the version
+        run: |
+          version="v$(node -p "require('./package.json').version")"
+          if [ "$version" != "$GITHUB_REF_NAME" ]; then
+            echo "Tag $GITHUB_REF_NAME doesn't match package.json's $version."
+            exit 1
+          fi
+      - run: bun install --frozen-lockfile
+      - run: bun run typecheck
+      - run: bun run lint
+      - run: bun test
+      - run: npm install -g npm@latest
+      - run: npm publish
