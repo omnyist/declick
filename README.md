@@ -24,8 +24,11 @@ It is published to npm as `@omnyist/declick`. To use a tagged release from GitHu
 ```json
 "devDependencies": {
   "@omnyist/declick": "github:omnyist/declick#v0.1.0"
-}
+},
+"trustedDependencies": ["@omnyist/declick"]
 ```
+
+The guard is built when the package installs. Bun runs that step for a dependency from GitHub only when it's listed in `trustedDependencies`; without it there's no `dist/` and the guard won't import. npm runs it either way.
 
 Then add whatever the presets you use need:
 
@@ -142,7 +145,7 @@ Both functions take the same options:
 
 ## Known traps
 
-- **`@oxlint/migrate` can drop rules without saying so.** Converting an ESLint config has lost `no-var`, `prefer-const` and `no-undef`, and has written file globs Oxlint never matches. Check a migrated config with the guard before trusting it.
+- **`@oxlint/migrate` can drop rules.** Older versions lost `no-var` and `prefer-const` without a word and wrote file globs Oxlint never matches. 1.87.0 keeps those two but skips nursery rules such as `no-undef` unless you pass `--with-nursery`. Check a migrated config with the guard before trusting it.
 - **Extglob patterns never match.** An override for `**/*.stories.@(ts|tsx)` or `+(…)` silently applies to nothing. Use braces: `**/*.stories.{ts,tsx}`.
 - **Suppressing a hooks rule turns off the React Compiler rules for the whole component or hook.** An `eslint-disable` for `exhaustive-deps` or `rules-of-hooks` makes the compiler skip that function, so its rules go quiet there too. `react/rule-suppression` reports these. Restructure the code instead, and lint with `--report-unused-disable-directives`.
 - **`--print-config` doesn't show everything Oxlint applies.** As of Oxlint 1.87, it leaves out the `jsPlugins` and `categories` that come from an extended file, the options of rules set in an extended file, and the top-level rules of every JS plugin ([oxc-project/oxc#22117](https://github.com/oxc-project/oxc/issues/22117)). Linting uses all of them. `resolvedConfig` adds them back from your config files.
