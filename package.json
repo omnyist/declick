@@ -9,6 +9,11 @@
     "react",
     "typescript"
   ],
+  "homepage": "https://github.com/omnyist/declick#readme",
+  "bugs": {
+    "url": "https://github.com/omnyist/declick/issues"
+  },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/omnyist/declick.git"
@@ -26,6 +31,9 @@
     "dist",
     "oxlint"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "prepare": "tsc -p tsconfig.build.json",

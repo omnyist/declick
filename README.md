@@ -19,7 +19,7 @@ Oxlint's JS plugins are in alpha as of Oxlint 1.87. The guard's `plant` check fa
 bun add -d @omnyist/declick oxlint oxlint-tsgolint
 ```
 
-Or from a tagged release on GitHub, in `package.json`:
+It is published to npm as `@omnyist/declick`. To use a tagged release from GitHub instead, in `package.json`:
 
 ```json
 "devDependencies": {
@@ -166,3 +166,7 @@ node test/node-smoke.mjs
 ```
 
 Each folder in `test/fixtures` is a small project that extends some of the presets and breaks their rules. The tests lint each one and compare every reported rule, and snapshot its resolved config.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
