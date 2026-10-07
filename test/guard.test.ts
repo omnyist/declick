@@ -69,6 +69,17 @@ describe('resolvedConfig', () => {
     expect(await resolvedConfig({ cwd: dir, oxlint })).toEqual(await resolvedConfig({ cwd: all, oxlint }))
   })
 
+  // --print-config names these rules jsx_a11y/… and leaves out the options of one set in an
+  // extended file.
+  test('keeps the options of a renamed plugin rule from an extended file', async () => {
+    const dir = project('renamed', [])
+    const preset = { plugins: ['jsx-a11y'], rules: { 'jsx-a11y/alt-text': ['error', { img: ['Image'] }] } }
+    writeFileSync(join(dir, 'preset.json'), JSON.stringify(preset))
+    writeFileSync(join(dir, '.oxlintrc.json'), JSON.stringify({ plugins: [], extends: ['./preset.json'] }))
+    const config = await resolvedConfig({ cwd: dir, oxlint })
+    expect(config.rules['jsx_a11y/alt-text']).toEqual(['error', { img: ['Image'] }])
+  })
+
   // The per-family probes would still pass with either rule gone; the resolved config doesn't.
   test.each([
     ['tanstack-query', '@tanstack/query/no-unstable-deps'],

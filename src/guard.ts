@@ -183,6 +183,8 @@ const aliases: [RegExp, string][] = [
   [/^@typescript-eslint\//, 'typescript/'],
   [/^react-hooks\//, 'react/'],
   [/^react-refresh\//, 'react/'],
+  [/^jsx-a11y\//, 'jsx_a11y/'],
+  [/^react-perf\//, 'react_perf/'],
 ]
 
 function canonical(rule: string): string {
