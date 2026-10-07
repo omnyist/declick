@@ -1,0 +1,5 @@
+{
+  "name": "fixture-base",
+  "private": true,
+  "type": "module"
+}

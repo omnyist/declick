@@ -1,0 +1,26 @@
+{
+  // The react plugin: the Rules of Hooks, the React Compiler's rules and Fast Refresh's
+  // only-export-components.
+  "plugins": ["react"],
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "warn",
+    // Suppressing a hooks rule makes the React Compiler skip the whole component or hook, so the
+    // compiler rules below go quiet there too. This reports the suppression.
+    "react/rule-suppression": "error",
+    "react/static-components": "error",
+    "react/use-memo": "error",
+    "react/void-use-memo": "error",
+    "react/preserve-manual-memoization": "error",
+    "react/incompatible-library": "warn",
+    "react/immutability": "warn",
+    "react/globals": "error",
+    "react/refs": "error",
+    "react/set-state-in-effect": "warn",
+    "react/error-boundaries": "error",
+    "react/purity": "warn",
+    "react/set-state-in-render": "error",
+    "react/unsupported-syntax": "warn",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "name": "@omnyist/declick",
+  "version": "0.1.0",
+  "description": "Oxlint presets for TypeScript and React projects, and a test helper that checks the rules still run.",
+  "keywords": [
+    "oxlint",
+    "oxlint-config",
+    "lint",
+    "react",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omnyist/declick.git"
+  },
+  "type": "module",
+  "exports": {
+    "./guard": {
+      "types": "./dist/guard.d.ts",
+      "default": "./dist/guard.js"
+    },
+    "./oxlint/*": "./oxlint/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "oxlint"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "oxlint --disable-nested-config --report-unused-disable-directives",
+    "test": "bun test"
+  },
+  "peerDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.104.1",
+    "eslint-plugin-storybook": "^11.0.0-alpha.4",
+    "oxlint": "^1.87.0",
+    "oxlint-tsgolint": "^7.0.2003"
+  },
+  "peerDependenciesMeta": {
+    "@tanstack/eslint-plugin-query": {
+      "optional": true
+    },
+    "eslint-plugin-storybook": {
+      "optional": true
+    },
+    "oxlint-tsgolint": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.104.1",
+    "@types/bun": "^1.4.2",
+    "@types/node": "^26.6.4",
+    "eslint-plugin-storybook": "11.0.0-alpha.4",
+    "oxlint": "^1.87.0",
+    "oxlint-tsgolint": "^7.0.2003",
+    "typescript": "^6.0.3"
+  }
+}

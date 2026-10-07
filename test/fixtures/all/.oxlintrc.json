@@ -1,0 +1,10 @@
+{
+  "plugins": [],
+  "extends": [
+    "../../../oxlint/base.json",
+    "../../../oxlint/react.json",
+    "../../../oxlint/tanstack-query.json",
+    "../../../oxlint/tanstack-router.json",
+    "../../../oxlint/storybook.json"
+  ]
+}

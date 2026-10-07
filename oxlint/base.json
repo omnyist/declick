@@ -1,0 +1,104 @@
+{
+  // Core JavaScript rules and the typescript plugin, with type-aware rules through tsgolint
+  // (the oxlint-tsgolint package).
+  "plugins": ["typescript"],
+  // Only the rules named below run. Oxlint's default correctness category is off, so an Oxlint
+  // upgrade that adds a rule to the category doesn't change what your lint reports.
+  "categories": {
+    "correctness": "off"
+  },
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "for-direction": "error",
+    "no-async-promise-executor": "error",
+    "no-case-declarations": "error",
+    "no-compare-neg-zero": "error",
+    "no-cond-assign": "error",
+    "no-constant-binary-expression": "error",
+    "no-constant-condition": ["error", { "checkLoops": "allExceptWhileTrue" }],
+    "no-control-regex": "error",
+    "no-debugger": "error",
+    "no-delete-var": "error",
+    "no-dupe-else-if": "error",
+    "no-duplicate-case": "error",
+    "no-empty": "error",
+    "no-empty-character-class": "error",
+    "no-empty-pattern": "error",
+    "no-empty-static-block": "error",
+    "no-ex-assign": "error",
+    "no-extra-boolean-cast": "error",
+    "no-fallthrough": "error",
+    "no-global-assign": "error",
+    "no-invalid-regexp": "error",
+    "no-irregular-whitespace": "error",
+    "no-loss-of-precision": "error",
+    "no-misleading-character-class": "error",
+    "no-nonoctal-decimal-escape": "error",
+    "no-prototype-builtins": "error",
+    "no-regex-spaces": "error",
+    "no-self-assign": "error",
+    "no-shadow-restricted-names": ["error", { "reportGlobalThis": false }],
+    "no-sparse-arrays": "error",
+    "no-unexpected-multiline": "error",
+    "no-unsafe-finally": "error",
+    "no-unsafe-optional-chaining": "error",
+    "no-unused-labels": "error",
+    "no-unused-private-class-members": "error",
+    "no-useless-backreference": "error",
+    "no-useless-catch": "error",
+    "no-useless-escape": "error",
+    "require-yield": "error",
+    "use-isnan": "error",
+    "valid-typeof": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "prefer-rest-params": "error",
+    "prefer-spread": "error",
+    "no-array-constructor": "error",
+    "no-unused-expressions": "error",
+    // A leading underscore marks a variable or argument as deliberately unused.
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+
+    "typescript/ban-ts-comment": "error",
+    "typescript/no-duplicate-enum-values": "error",
+    "typescript/no-empty-object-type": "error",
+    // A warning, because an existing codebase usually has some.
+    "typescript/no-explicit-any": "warn",
+    "typescript/no-extra-non-null-assertion": "error",
+    "typescript/no-misused-new": "error",
+    "typescript/no-namespace": "error",
+    "typescript/no-non-null-asserted-optional-chain": "error",
+    "typescript/no-require-imports": "error",
+    "typescript/no-this-alias": "error",
+    "typescript/no-unnecessary-type-constraint": "error",
+    "typescript/no-unsafe-declaration-merging": "error",
+    "typescript/no-unsafe-function-type": "error",
+    "typescript/no-wrapper-object-types": "error",
+    "typescript/prefer-as-const": "error",
+    "typescript/prefer-namespace-keyword": "error",
+    "typescript/triple-slash-reference": "error",
+
+    // The type-aware rules. They are warnings so that adopting them doesn't block a build on
+    // findings that were already there; promote each one to "error" in your own config once its
+    // count reaches zero.
+    "typescript/await-thenable": "warn",
+    "typescript/no-array-delete": "warn",
+    "typescript/no-base-to-string": "warn",
+    "typescript/no-duplicate-type-constituents": "warn",
+    "typescript/no-floating-promises": "warn",
+    "typescript/no-for-in-array": "warn",
+    "typescript/no-implied-eval": "warn",
+    "typescript/no-meaningless-void-operator": "warn",
+    "typescript/no-misused-promises": "warn",
+    "typescript/no-misused-spread": "warn",
+    "typescript/no-redundant-type-constituents": "warn",
+    "typescript/no-unnecessary-type-assertion": "warn",
+    "typescript/no-unsafe-unary-minus": "warn",
+    "typescript/no-useless-default-assignment": "warn",
+    "typescript/require-array-sort-compare": "warn",
+    "typescript/restrict-template-expressions": "warn",
+    "typescript/unbound-method": "warn"
+  }
+}

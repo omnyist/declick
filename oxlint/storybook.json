@@ -1,0 +1,33 @@
+{
+  // eslint-plugin-storybook, loaded as an Oxlint JS plugin, with the rules its flat/recommended
+  // config sets. Install eslint-plugin-storybook beside oxlint.
+  "jsPlugins": ["eslint-plugin-storybook"],
+  "overrides": [
+    {
+      // Stories export a meta object and story objects rather than components, and Storybook
+      // re-renders them itself, so Fast Refresh's rule has nothing to protect. Render functions
+      // are not components either, which is why the plugin turns rules-of-hooks off.
+      "files": ["**/*.stories.{ts,tsx}"],
+      "rules": {
+        "storybook/await-interactions": "error",
+        "storybook/context-in-play-function": "error",
+        "storybook/default-exports": "error",
+        "storybook/hierarchy-separator": "warn",
+        "storybook/no-redundant-story-name": "warn",
+        "storybook/no-renderer-packages": "error",
+        "storybook/prefer-pascal-case": "warn",
+        "storybook/story-exports": "error",
+        "storybook/use-storybook-expect": "error",
+        "storybook/use-storybook-testing-library": "error",
+        "react/rules-of-hooks": "off",
+        "react/only-export-components": "off"
+      }
+    },
+    {
+      "files": ["**/.storybook/main.ts"],
+      "rules": {
+        "storybook/no-uninstalled-addons": "error"
+      }
+    }
+  ]
+}

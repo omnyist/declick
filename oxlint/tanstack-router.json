@@ -1,0 +1,14 @@
+{
+  "overrides": [
+    {
+      // TanStack Router's file routes export `Route` beside a local component. With
+      // autoCodeSplitting the component moves into its own chunk and the router plugin handles
+      // the route's hot reload, so Fast Refresh is not at risk. The glob is relative to the
+      // directory of your own config file, and src/routes is the router's default.
+      "files": ["src/routes/**/*.tsx"],
+      "rules": {
+        "react/only-export-components": "off"
+      }
+    }
+  ]
+}

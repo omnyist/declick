@@ -1,0 +1,7 @@
+{
+  "plugins": [],
+  "extends": [
+    "../../../oxlint/base.json",
+    "../../../oxlint/react.json"
+  ]
+}
